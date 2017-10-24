@@ -1,0 +1,35 @@
+<div class="col-md-8 col-md-offset-2">
+    <h2>Register</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fullName.valid }">
+            <label for="fullName">Full Name</label>
+            <input type="text" placeholder="Only words" class="form-control" name="fullName" [(ngModel)]="model.fullName" #fullName="ngModel" required pattern="[a-zA-Z][a-zA-Z ]+" />
+            <div *ngIf="f.submitted && !fullName.valid" class="help-block">Full Name is required (please, use only words)</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <label for="email">E-mail</label>
+            <input type="text" placeholder="sample: test@gmail.com" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required email />
+            <div *ngIf="f.submitted && !email.valid" class="help-block">email is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" placeholder="Any characters"  class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Must be at least 5 characters" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required minlength="5" maxlength="10" />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required (must be at least 5 characters)</div>
+        </div>
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confirmpassword.valid }">
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" placeholder="Enter the password again" class="form-control" name="confirmpassword" [(ngModel)]="model.confirmpassword" #confirmpassword="ngModel" required validateEqual="password" />
+            <div *ngIf="f.submitted && !confirmpassword.valid" class="help-block">Passwords did not match</div>
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

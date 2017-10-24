@@ -1,0 +1,8 @@
+<div class="col-md-8 col-md-offset-2">
+    <h2>Hi {{currentUser.fullName}}!</h2>
+    <h2>Your email: {{currentUser.email}}!</h2>
+    <p>You're logged in as <strong>{{currentUser.username}}</strong></p>
+    
+    
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>
