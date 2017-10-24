@@ -1,1 +1,1 @@
-# Angular-Registration-2
+Please, use --npm install-- and --npm start--
